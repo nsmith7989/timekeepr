@@ -23,6 +23,7 @@ function loadTimesaver() {
 
 }
 
+
 function watchSuperDirectory(dir) { 
 	watch.watchTree(dir, function (f, curr, prev) {
 		if (typeof f === 'object' && curr === null && prev === null) {
@@ -31,7 +32,6 @@ function watchSuperDirectory(dir) {
 			return;
 		} else if (prev === null) {
 			//we added a new file
-			watchSuperDirectory(dir);
 		} else {
 			handleTimePassed(f, curr, prev);
 		}
