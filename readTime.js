@@ -1,13 +1,17 @@
 var fs = require('fs');
+
 var timeObj = readFile();
 
 for (var site in timeObj) {
-	console.log(site);
-	var site = timeObj[site];
+	
+	var item = timeObj[site];
 	//convert to hours
-	var hoursSpent = site.timeSpent / 60;
+	var hoursSpent = item.timeSpent / 60,
+		roundedHours = Math.round(hoursSpent * 100) / 100
 
-	console.log(hoursSpent);
+	if (roundedHours !== 0) {
+		console.log('==========\n' + site + ' : ' + roundedHours + '\n==========');
+	}
 
 }
 
