@@ -2,7 +2,7 @@ var watch = require('watch');
 var fs = require('fs');
 var directoryObj = loadTimesaver() || {};
 watchSuperDirectory('/Users/nathanaelsmith/PhpstormProjects');
-var count = 0;
+var count = directoryObj.count || 0;
 
 var excluded = /.idea/g;
 var excluded2 = /.git/g;
@@ -48,6 +48,12 @@ function handleTimePassed(f, curr, prev) {
 	var site =  f.split('/')[4];
 	console.log('You\'re currently in ' + site);
 
+	//read the day logged, if it's not the current day, overwrite the directory object
+	if (directoryObj.currentDay !== (new Date()).getDay()) {
+		console.log('++Old data, delete++');
+		directoryObj = {};
+	}
+
 	console.log('File changed: ' + f);
 
 	directoryObj.currentDay = (new Date()).getDay();
@@ -60,13 +66,16 @@ function handleTimePassed(f, curr, prev) {
 
 	count = currentObj.count || 0;
 
-	pastCountKey = count - 1;
-
-	pastTime = currentObj['mtime' + pastCountKey];
+	//read and write every other
+	if (count % 2 === 0) {
+    	pastTime = currentObj.mtimeOdd;
+    	currentObj.mtimeEven = new Date();
+  	} else {
+    	pastTime = currentObj.mtimeEven;
+    	currentObj.mtimeOdd = new Date();
+  	}
 
 	pastTime = new Date(pastTime);
-
-	currentObj['mtime' + count] = new Date();
 
 	difference = ((new Date()) - pastTime) / 60000;
 
