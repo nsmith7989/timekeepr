@@ -16,7 +16,11 @@ function loadTimesaver() {
 	}
 	try {
 		parsedData = JSON.parse(data);
-		return parsedData;
+		if (parsedData.currentDay === (new Date()).getDay()) {
+			return parsedData
+		} else {
+			return false;
+		}
 	} catch(e) {
 		return false;
 	}
@@ -45,6 +49,8 @@ function handleTimePassed(f, curr, prev) {
 	console.log('You\'re currently in ' + site);
 
 	console.log('File changed: ' + f);
+
+	directoryObj.currentDay = (new Date()).getDay();
 
 	if ( directoryObj[site] === undefined){
 		directoryObj[site] = {};
