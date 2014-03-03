@@ -17,6 +17,9 @@
     "growl": "~1.7.0"
   },
   "bin": {
-  	"timekeepr": "lib/timekeepr.js"
+    "timekeepr": "lib/timekeepr.js"
+  },
+  "devDependencies": {
+    "humanize": "0.0.9"
   }
 }
