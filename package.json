@@ -12,7 +12,16 @@
   },
   "author": "Nathanael Smith",
   "license": "MIT",
+  "dependencies": {
+    "watch": "~0.9.0",
+    "growl": "~1.7.0",
+    "moment": "^2.5.1",
+    "lodash": "^2.4.1"
+  },
+  "bin": {
+    "timekeepr": "lib/timekeepr.js"
+  },
   "devDependencies": {
-    "watch": "~0.9.0"
+    "humanize": "0.0.9"
   }
 }
