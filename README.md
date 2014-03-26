@@ -1,9 +1,9 @@
 timekeepr
 =========
 
-Simple way to tack time spent in each directory.
+Simple way to track time spent in each directory.
 
-If you work code multiple projects throughout the day and want to track the amount of time you spend in each one, this might work for you. 
+If you work on multiple code projects throughout the day and want to track the amount of time you spend in each one, this might work for you. 
 
 #### Requirements
 
